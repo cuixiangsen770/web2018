@@ -26,9 +26,10 @@ int m,n,w;
  cout<<"请输入增加的边的顶点 目标路由 权重：";
 
 cin>>m>>n>>w;
-
+printf("夏星明");
 ofstream fout("db.txt",ios::app);
 fout<<m<<" "<<n<<" "<<w<<"\n";
+ 
    fout.close();
    cout<<"添加成功!"<<endl; 
    h();
