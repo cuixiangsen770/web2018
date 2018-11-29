@@ -10,21 +10,21 @@ printf("\n");
 printf("\n");
 printf("\n");
 printf("\n");
-   printf("\t\t\t ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\n");
+   printf("\t\t\t â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
    printf("\t\t\t|                                                      |\n");
-   printf("\t\t\t|                    ÍøÂçÍØÆË&Â·ÓÉ±íÏµÍ³               |\n");
-   printf("\t\t\t|                    ÇëÑ¡ÔñÏàÓ¦ÊµÏÖ¹¦ÄÜ                |\n");
-   printf("\t\t\t|                    1.Éú³Éµ±Ç°ÍøÂçÂ·ÓÉ±í              |\n");
-   printf("\t\t\t|                    2.ĞŞ¸Äµ±Ç°ÍøÂçÍØÆËÍ¼              |\n");
-   printf("\t\t\t|                    3.ÖØÖÃÍøÂçÍØÆËÍ¼                  |\n");
-   printf("\t\t\t|                    4.´úÂëËµÃ÷                        |\n");
-   printf("\t\t\t|                    5.ÍË³öÏµÍ³                        |\n");
-   printf("\t\t\t|                    6.²é¿´ÌØ¶¨ÍøÂçÂ·ÓÉµÄÂ·ÓÉ±í        |\n");   
-   printf("\t\t\t¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª  ÇëÊäÈëÄãµÄÑ¡Ôñ£º");
+   printf("\t\t\t|                    ç½‘ç»œæ‹“æ‰‘&è·¯ç”±è¡¨ç³»ç»Ÿ               |\n");
+   printf("\t\t\t|                    è¯·é€‰æ‹©ç›¸åº”å®ç°åŠŸèƒ½                |\n");
+   printf("\t\t\t|                    1.ç”Ÿæˆå½“å‰ç½‘ç»œè·¯ç”±è¡¨              |\n");
+   printf("\t\t\t|                    2.ä¿®æ”¹å½“å‰ç½‘ç»œæ‹“æ‰‘å›¾              |\n");
+   printf("\t\t\t|                    3.é‡ç½®ç½‘ç»œæ‹“æ‰‘å›¾                  |\n");
+   printf("\t\t\t|                    4.ä»£ç è¯´æ˜                        |\n");
+   printf("\t\t\t|                    5.é€€å‡ºç³»ç»Ÿ                        |\n");
+   printf("\t\t\t|                    6.æŸ¥çœ‹ç‰¹å®šç½‘ç»œè·¯ç”±çš„è·¯ç”±è¡¨        |\n");   
+   printf("\t\t\tâ€”â€”â€”â€”â€”â€”â€”â€”â€”â€”  è¯·è¾“å…¥ä½ çš„é€‰æ‹©ï¼š");
    scanf("%d",&p);
    
     if(p<1||p>6)
-	{printf("\n\nÊäÈëĞòºÅ²»ÊôÓÚ²Ëµ¥£¬ÇëÖØĞÂÊäÈë\n\n");
+	{printf("\n\nè¾“å…¥åºå·ä¸å±äºèœå•ï¼Œè¯·é‡æ–°è¾“å…¥\n\n");
 	p=7;}
 	switch(p)
 	{
@@ -32,12 +32,13 @@ printf("\n");
      case 2:system("txt.exe main.txt db.txt");getch();system("cls");menu();  
      case 3:system("retxt.exe main.txt db.txt");;getch();system("cls");menu();  
 	 case 4:system("webweb.exe");getch();system("cls");menu();
-	 case 5:exit(0);break;      //ÍË³ö
+	 case 5:exit(0);break;      //é€€å‡º
 	 case 6:system("remain.exe main.txt db.txt");getch();system("cls");menu();
      case 7:;getch();system("cls");menu();
 	}
 }
 
 int main(){ 
+	printf("jixing");
 menu();
 }
