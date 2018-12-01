@@ -39,6 +39,5 @@ printf("\n");
 }
 
 int main(){ 
-	printf("jixing");
 menu();
 }
