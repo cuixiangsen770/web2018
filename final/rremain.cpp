@@ -19,9 +19,8 @@ cout<<"输入你要查找的路由编号："<<endl;
 cin>>id;
 
 while(fgets(a,1000,fin))//从原文件读取一行
-//if(a[1]==id||a[6]==id)
-if(a[1]==id)
-	{
+if(a[1]==id||a[6]==id)
+{
 cout<<a<<endl; 
 }
 fclose(fin);
