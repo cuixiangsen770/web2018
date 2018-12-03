@@ -136,7 +136,7 @@ void Graph_DG::print_path() {
     int temp = 0;
     
     for (row = 0; row < this->vexnum; row++) {
-        for (col = row + 1; col < this->vexnum; col++) {
+        for (col = 0; col < this->vexnum; col++) {
             cout << "v" <<  row + 1 << "---" << "v" <<  col+1 << " weight: "
                 << this->dis[row][col] << " path: " << " v" <<  row + 1;
             temp = path[row][col];
@@ -155,7 +155,7 @@ void Graph_DG::print_path() {
     ofstream ccout("res.txt");
     
      for (row = 0; row < this->vexnum; row++) {
-        for (col = row + 1; col < this->vexnum; col++) {
+        for (col = 0; col < this->vexnum; col++) {
             ccout << "v" <<  row + 1 << "---" << "v" <<  col+1 << " weight: "
                 << this->dis[row][col] << " path: " << " v" <<  row + 1;
             temp = path[row][col];
