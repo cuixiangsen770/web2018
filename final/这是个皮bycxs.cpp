@@ -10,6 +10,7 @@ printf("\n");
 printf("\n");
 printf("\n");
 printf("\n");
+printf("歪佛苧"); 
    printf("\t\t\t ！！！！！！！！！！！！！！！！！！！！！！！！！！！\n");
    printf("\t\t\t|                                                      |\n");
    printf("\t\t\t|                    利大謡橡&揃喇燕狼由               |\n");
