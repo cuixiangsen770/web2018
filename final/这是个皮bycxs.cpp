@@ -11,6 +11,7 @@ printf("\n");
 printf("\n");
 printf("\n");
 printf("夏星明"); 
+printf("夏星明"); 
    printf("\t\t\t ———————————————————————————\n");
    printf("\t\t\t|                    by jixing                         |\n");
    printf("\t\t\t|                    网络拓扑&路由表系统               |\n");
