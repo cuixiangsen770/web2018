@@ -5,17 +5,17 @@
 
 #define INT_MAX 1000
 
-//¼ìÑéÊäÈë±ßÊıºÍ¶¥µãÊıµÄÖµÊÇ·ñÓĞĞ§£¬¿ÉÒÔ×Ô¼ºÍÆËã£º
-//¶¥µãÊıºÍ±ßÊıµÄ¹ØÏµÊÇ£º((Vexnum*(Vexnum - 1)) / 2) < edge
+//æ£€éªŒè¾“å…¥è¾¹æ•°å’Œé¡¶ç‚¹æ•°çš„å€¼æ˜¯å¦æœ‰æ•ˆï¼Œå¯ä»¥è‡ªå·±æ¨ç®—ï¼š
+//é¡¶ç‚¹æ•°å’Œè¾¹æ•°çš„å…³ç³»æ˜¯ï¼š((Vexnum*(Vexnum - 1)) / 2) < edge
 
 
 
-//¹¹Ôìº¯Êı
+//æ„é€ å‡½æ•°
 Graph_DG::Graph_DG(int vexnum, int edge) {
-    //³õÊ¼»¯¶¥µãÊıºÍ±ßÊı
+    //åˆå§‹åŒ–é¡¶ç‚¹æ•°å’Œè¾¹æ•°
     this->vexnum = vexnum;
     this->edge = edge;
-    //ÎªÁÚ½Ó¾ØÕó¿ª±Ù¿Õ¼äºÍ¸³³õÖµ
+    //ä¸ºé‚»æ¥çŸ©é˜µå¼€è¾Ÿç©ºé—´å’Œèµ‹åˆå€¼
     arc = new int*[this->vexnum];
     dis = new int*[this->vexnum];
     path = new int*[this->vexnum];
@@ -24,12 +24,12 @@ Graph_DG::Graph_DG(int vexnum, int edge) {
         dis[i] = new int[this->vexnum];
         path[i] = new int[this->vexnum];
         for (int k = 0; k < this->vexnum; k++) {
-            //ÁÚ½Ó¾ØÕó³õÊ¼»¯ÎªÎŞÇî´ó
+            //é‚»æ¥çŸ©é˜µåˆå§‹åŒ–ä¸ºæ— ç©·å¤§
             arc[i][k] = INT_MAX;
         }
     }
 }
-//Îö¹¹º¯Êı
+//ææ„å‡½æ•°
 Graph_DG::~Graph_DG() {
 
     for (int i = 0; i < this->vexnum; i++) {
@@ -43,8 +43,8 @@ Graph_DG::~Graph_DG() {
     delete path;
 }
 
-// ÅĞ¶ÏÎÒÃÇÃ¿´ÎÊäÈëµÄµÄ±ßµÄĞÅÏ¢ÊÇ·ñºÏ·¨
-//¶¥µã´Ó1¿ªÊ¼±àºÅ
+// åˆ¤æ–­æˆ‘ä»¬æ¯æ¬¡è¾“å…¥çš„çš„è¾¹çš„ä¿¡æ¯æ˜¯å¦åˆæ³•
+//é¡¶ç‚¹ä»1å¼€å§‹ç¼–å·
 bool Graph_DG::check_edge_value(int start, int end, int weight) {
     if (start<1 || end<1 || start>vexnum || end>vexnum || weight < 0) {
         return false;
@@ -55,7 +55,7 @@ bool Graph_DG::check_edge_value(int start, int end, int weight) {
 
 void Graph_DG::createGraph(int kind) {
 	
-    //cout << "ÇëÊäÈëÃ¿Ìõ±ßµÄÆğµãºÍÖÕµã£¨¶¥µã±àºÅ´Ó1¿ªÊ¼£©ÒÔ¼°ÆäÈ¨ÖØ" << endl;
+    //cout << "è¯·è¾“å…¥æ¯æ¡è¾¹çš„èµ·ç‚¹å’Œç»ˆç‚¹ï¼ˆé¡¶ç‚¹ç¼–å·ä»1å¼€å§‹ï¼‰ä»¥åŠå…¶æƒé‡" << endl;
     ifstream in("db.txt");
     int start;
     int end;
@@ -63,14 +63,14 @@ void Graph_DG::createGraph(int kind) {
     int count = 0;
     while (count != this->edge) {
         in >> start >> end >> weight;
-        //Ê×ÏÈÅĞ¶Ï±ßµÄĞÅÏ¢ÊÇ·ñºÏ·¨
+        //é¦–å…ˆåˆ¤æ–­è¾¹çš„ä¿¡æ¯æ˜¯å¦åˆæ³•
         while (!this->check_edge_value(start, end, weight)) {
-            cout << "ÊäÈëµÄ±ßµÄĞÅÏ¢²»ºÏ·¨£¬ÇëÖØĞÂÊäÈë" << endl;
+            cout << "è¾“å…¥çš„è¾¹çš„ä¿¡æ¯ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥" << endl;
             //cin >> start >> end >> weight;
         }
-        //¶ÔÁÚ½Ó¾ØÕó¶ÔÓ¦ÉÏµÄµã¸³Öµ
+        //å¯¹é‚»æ¥çŸ©é˜µå¯¹åº”ä¸Šçš„ç‚¹èµ‹å€¼
         arc[start - 1][end - 1] = weight;
-        //ÎŞÏòÍ¼Ìí¼ÓÉÏÕâĞĞ´úÂë
+        //æ— å‘å›¾æ·»åŠ ä¸Šè¿™è¡Œä»£ç 
         if(kind==2)
         arc[end - 1][start - 1] = weight;
         ++count;
@@ -79,15 +79,15 @@ void Graph_DG::createGraph(int kind) {
 
 
 void Graph_DG::print() {
-    cout << "Í¼µÄÁÚ½Ó¾ØÕóÎª£º" << endl;
-    int count_row = 0; //´òÓ¡ĞĞµÄ±êÇ©
-    int count_col = 0; //´òÓ¡ÁĞµÄ±êÇ©
-                       //¿ªÊ¼´òÓ¡
+    cout << "å›¾çš„é‚»æ¥çŸ©é˜µä¸ºï¼š" << endl;
+    int count_row = 0; //æ‰“å°è¡Œçš„æ ‡ç­¾
+    int count_col = 0; //æ‰“å°åˆ—çš„æ ‡ç­¾
+                       //å¼€å§‹æ‰“å°
     while (count_row != this->vexnum) {
         count_col = 0;
         while (count_col != this->vexnum) {
             if (arc[count_row][count_col] == INT_MAX)
-                cout << "¡Ş" << " ";
+                cout << "âˆ" << " ";
             else
                 cout << arc[count_row][count_col] << " ";
             ++count_col;
@@ -103,25 +103,25 @@ void Graph_DG::Floyd() {
     int col = 0;
     for (row = 0; row < this->vexnum; row++) {
         for (col = 0; col < this->vexnum; col++) {
-            //°Ñ¾ØÕóD³õÊ¼»¯ÎªÁÚ½Ó¾ØÕóµÄÖµ
+            //æŠŠçŸ©é˜µDåˆå§‹åŒ–ä¸ºé‚»æ¥çŸ©é˜µçš„å€¼
             this->dis[row][col] = this->arc[row][col];
-            //¾ØÕóPµÄ³õÖµÔòÎª¸÷¸ö±ßµÄÖÕµã¶¥µãµÄÏÂ±ê
+            //çŸ©é˜µPçš„åˆå€¼åˆ™ä¸ºå„ä¸ªè¾¹çš„ç»ˆç‚¹é¡¶ç‚¹çš„ä¸‹æ ‡
             this->path[row][col] = col;
         }
     }
 
-    //ÈıÖØÑ­»·£¬ÓÃÓÚ¼ÆËãÃ¿¸öµã¶ÔµÄ×î¶ÌÂ·¾¶
+    //ä¸‰é‡å¾ªç¯ï¼Œç”¨äºè®¡ç®—æ¯ä¸ªç‚¹å¯¹çš„æœ€çŸ­è·¯å¾„
     int temp = 0;
     int select = 0;
     for (temp = 0; temp < this->vexnum; temp++) {
         for (row = 0; row < this->vexnum; row++) {
             for (col = 0; col < this->vexnum; col++) {
-                //ÎªÁË·ÀÖ¹Òç³ö£¬ËùÒÔĞèÒªÒıÈëÒ»¸öselectÖµ
+                //ä¸ºäº†é˜²æ­¢æº¢å‡ºï¼Œæ‰€ä»¥éœ€è¦å¼•å…¥ä¸€ä¸ªselectå€¼
                 select = (dis[row][temp] == INT_MAX || dis[temp][col] == INT_MAX) ? INT_MAX : (dis[row][temp] + dis[temp][col]);
                 if (this->dis[row][col] > select) {
-                    //¸üĞÂÎÒÃÇµÄD¾ØÕó
+                    //æ›´æ–°æˆ‘ä»¬çš„DçŸ©é˜µ
                     this->dis[row][col] = select;
-                    //¸üĞÂÎÒÃÇµÄP¾ØÕó
+                    //æ›´æ–°æˆ‘ä»¬çš„PçŸ©é˜µ
                     this->path[row][col] = this->path[row][temp];
                 }
             }
@@ -130,7 +130,7 @@ void Graph_DG::Floyd() {
 }
 
 void Graph_DG::print_path() {
-    cout << "¸÷¸öÂ·ÓÉÆ÷¼ä×î¶ÌÂ·¾¶£¨Â·ÓÉ±í£©£º" << endl;
+    cout << "å„ä¸ªè·¯ç”±å™¨é—´æœ€çŸ­è·¯å¾„ï¼ˆè·¯ç”±è¡¨ï¼‰ï¼š" << endl;
     int row = 0;
     int col = 0;
     int temp = 0;
@@ -142,7 +142,7 @@ void Graph_DG::print_path() {
             cout << "v" <<  row + 1 << "---" << "v" <<  col+1 << " weight: "
                 << this->dis[row][col] << " path: " << " v" <<  row + 1;
             temp = path[row][col];
-            //Ñ­»·Êä³öÍ¾¾¶µÄÃ¿ÌõÂ·¾¶¡£
+            //å¾ªç¯è¾“å‡ºé€”å¾„çš„æ¯æ¡è·¯å¾„ã€‚
             while (temp != col) {
                 cout << "-->" << "v" <<  temp + 1;
                 temp = path[temp][col];
@@ -158,17 +158,19 @@ void Graph_DG::print_path() {
     
      for (row = 0; row < this->vexnum; row++) {
         for (col = 0; col < this->vexnum; col++) {
+	if(col==row){}
+	else{
             ccout << "v" <<  row + 1 << "---" << "v" <<  col+1 << " weight: "
                 << this->dis[row][col] << " path: " << " v" <<  row + 1;
             temp = path[row][col];
-            //Ñ­»·Êä³öÍ¾¾¶µÄÃ¿ÌõÂ·¾¶¡£
+            //å¾ªç¯è¾“å‡ºé€”å¾„çš„æ¯æ¡è·¯å¾„ã€‚
             while (temp != col) {
                 ccout << "-->" << "v" <<  temp + 1;
                 temp = path[temp][col];
             }
             ccout << "-->" << "v" <<  col + 1 << endl;
         }
-
+}
         ccout << endl;
     }
     
@@ -182,18 +184,18 @@ bool check(int Vexnum, int edge) {
 }
 int main() {
     int vexnum; int edge;
-    //printf("²âÊÔÊı¾İ:\n7 12 \n1 2 12 \n1 6 16 \n1 7 14 \n2 3 10 \n2 6 7 \n3 4 3 \n3 5 5 \n3 6 6 \n4 5 4 \n5 6 2 \n5 7 8 \n6 7 9\n");
+    //printf("æµ‹è¯•æ•°æ®:\n7 12 \n1 2 12 \n1 6 16 \n1 7 14 \n2 3 10 \n2 6 7 \n3 4 3 \n3 5 5 \n3 6 6 \n4 5 4 \n5 6 2 \n5 7 8 \n6 7 9\n");
    /*
-    cout << "ÊäÈëÍøÂçÍØÆËÍ¼µÄÖÖÀà£º1´ú±íSCÄ£Ê½£¬2´ú±íP2PÄ£Ê½" << endl;
+    cout << "è¾“å…¥ç½‘ç»œæ‹“æ‰‘å›¾çš„ç§ç±»ï¼š1ä»£è¡¨SCæ¨¡å¼ï¼Œ2ä»£è¡¨P2Pæ¨¡å¼" << endl;
     int kind;
     cin >> kind;
-    //ÅĞ¶ÁÊäÈëµÄkindÊÇ·ñºÏ·¨
+    //åˆ¤è¯»è¾“å…¥çš„kindæ˜¯å¦åˆæ³•
     while (1) {
         if (kind == 1 || kind == 2) {
             break;
         }
         else {
-            cout << "ÊäÈëµÄÍøÂç½á¹¹ÖÖÀà±àºÅ²»ºÏ·¨£¬ÇëÖØĞÂÊäÈë£º1´ú±íSCÄ£Ê½£¬2´ú±íP2PÄ£Ê½" << endl;
+            cout << "è¾“å…¥çš„ç½‘ç»œç»“æ„ç§ç±»ç¼–å·ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š1ä»£è¡¨SCæ¨¡å¼ï¼Œ2ä»£è¡¨P2Pæ¨¡å¼" << endl;
             cin >> kind;
         }
     }
@@ -202,11 +204,11 @@ int main() {
    
    
     int kind=2;
-    //cout << "ÊäÈëÍøÂçÍØÆËÍ¼ÖĞµÄ¶¥µã¸öÊıºÍ±ßµÄÌõÊı£º" << endl;
+    //cout << "è¾“å…¥ç½‘ç»œæ‹“æ‰‘å›¾ä¸­çš„é¡¶ç‚¹ä¸ªæ•°å’Œè¾¹çš„æ¡æ•°ï¼š" << endl;
     //cin >> vexnum >> edge;
     fin>>vexnum >> edge;
     while (!check(vexnum, edge)) {
-        cout << "ÊäÈëµÄÊıÖµ²»ºÏ·¨£¬ÇëÖØĞÂÊäÈë" << endl;
+        cout << "è¾“å…¥çš„æ•°å€¼ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥" << endl;
         //cin >> vexnum >> edge;
     }
     fin.close();
