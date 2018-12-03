@@ -198,6 +198,7 @@ int main() {
     */
     ifstream fin("main.txt");
    
+   
     int kind=2;
     //cout << "输入网络拓扑图中的顶点个数和边的条数：" << endl;
     //cin >> vexnum >> edge;
@@ -210,10 +211,7 @@ int main() {
     Graph_DG graph(vexnum, edge);
     graph.createGraph(kind);
     
-    
-    
-    
-    
+    printf("jixing dayin message");
     graph.print();
     graph.Floyd();
     graph.print_path();
