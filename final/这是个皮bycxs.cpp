@@ -11,7 +11,7 @@ printf("\n");
 printf("\n");
 printf("\n");
    printf("\t\t\t ———————————————————————————\n");
-   printf("\t\t\t|                    by jixing                         |\n");
+   printf("\t\t\t|                                                      |\n");
    printf("\t\t\t|                    网络拓扑&路由表系统               |\n");
    printf("\t\t\t|                    请选择相应实现功能                |\n");
    printf("\t\t\t|                    1.生成当前网络路由表              |\n");
