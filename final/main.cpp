@@ -137,6 +137,8 @@ void Graph_DG::print_path() {
     
     for (row = 0; row < this->vexnum; row++) {
         for (col = 0; col < this->vexnum; col++) {
+        	if(col==row){}
+			else{ 
             cout << "v" <<  row + 1 << "---" << "v" <<  col+1 << " weight: "
                 << this->dis[row][col] << " path: " << " v" <<  row + 1;
             temp = path[row][col];
@@ -147,7 +149,7 @@ void Graph_DG::print_path() {
             }
             cout << "-->" << "v" <<  col + 1 << endl;
         }
-
+        }
         cout << endl;
     }
     
